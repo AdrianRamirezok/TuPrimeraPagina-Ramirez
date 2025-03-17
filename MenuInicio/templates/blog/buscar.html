@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Buscar{% endblock %}
+
+{% block content %}
+    <h2>Buscar Posts</h2>
+    <form method="get">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if resultados %}
+        <h3>Resultados:</h3>
+        <ul>
+            {% for post in resultados %}
+                <li>{{ post.titulo }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
